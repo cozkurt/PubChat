@@ -255,12 +255,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         let deviceToken: AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey("deviceToken")
         println("**********deviceToken is **** \(deviceToken)")
         
-//        appDel.client?.addPushNotificationsOnChannels(["push"], withDevicePushToken: deviceToken as! NSData, andCompletion: { (PNAcknowledgmentStatus) -> Void in
-//            println("******PNAcknowledgmentStatus*****")
-//            println(PNAcknowledgmentStatus.errorData)
-//        })
-        
-        appDel.client?.addPushNotificationsOnChannels(["push"], withDevicePushToken: deviceToken as! NSData, andCompletion: nil)
+        var pushChannel = channel + "push"
+        appDel.client?.addPushNotificationsOnChannels([pushChannel], withDevicePushToken: deviceToken as! NSData, andCompletion: nil)
         
         appDel.client?.hereNowForChannel(channel, withCompletion: { (result, status) -> Void in
             for ent in result.data.uuids as! NSArray{
@@ -545,7 +541,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         
         var payload =
         ["debug":true,
-            "apns":
+            "aps":
                 ["alert":"Ping From \(userName)",
                 "badge":"1",
                 "sound":"default"]
@@ -555,18 +551,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         
         let appDel = UIApplication.sharedApplication().delegate! as! AppDelegate
         
+        var pushChannel = chan + "push"
         appDel.client?.publish(
             "test",
-            toChannel: "push" as String,
+            toChannel: pushChannel,
             mobilePushPayload: payload as [NSObject : AnyObject],
             withCompletion: nil)
         
-//        var sentAlert = UIAlertView()
-//        sentAlert.title = "Alert Sent"
-//        //sentAlert.message = (friendsArray[indexPath.row] as String).uppercaseString
-//        sentAlert.addButtonWithTitle("OK")
-//        sentAlert.show()
-
     }
     
 }
