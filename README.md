@@ -13,7 +13,7 @@ In this tutorial I am going to walk you through building a simple chat app in Sw
 * **Presence** - so we can see when friends enter and leave the chat
 * **Mobile Push Notifications** - to PING the entire channel with a Push Notification
 
-![image](/Users/nyjetsjustin/Documents/PubNub/pubChatMau/send.gif)
+![image](ReadMe/send.gif)
 	
 	
 Before we begin, you will need to check out our [Swift Quick Start](http://www.pubnub.com/blog/realtime-ios-apps-getting-started-with-swift-and-pubnub/) for a super simple tutorial on how to set up PubNub with your Swift project. From the tutorial you will need the Objective-C Bridging-Header and PubNub Pods.
@@ -37,7 +37,7 @@ Back on the storyboard I am going to drag a few elements onto `MessageTableViewC
 
 My cell looks like this:
 
-![image](/Users/nyjetsjustin/Documents/PubNub/pubChatMau/cell1.png)
+![image](ReadMe/cell1.png)
  
  
 Open the assistant editor and lets connect our elements to `MessageTableViewCell.swift`. We name the top left label `userLabel`, which will be where the username is displayed. The top right label we name `timeLabel`, which will display the message timestamp. And last the text field we name `messageTextField`, will display the chat message.
@@ -46,13 +46,13 @@ We now need to add components so we can type & send messages also a PING button.
 
 Drag a textfield, and two buttons onto your storyboard and place them beneath your table view. After very minimal styling my set up looks like this:
 
-![image](/Users/nyjetsjustin/Documents/PubNub/pubChatMau/type.png) 
+![image](ReadMe/type.png) 
 
 Connect these components to the View Controller and name them sendButton, compostTextView and pingButton.
 
  And lastly, we drag a Button to the top right of the Navigation Bar like so:
  
- ![image](/Users/nyjetsjustin/Documents/PubNub/pubChatMau/barbutton.png) 
+ ![image](ReadMe/barbutton.png) 
  
 Connect this button to the View Controller and name it occupancyButton.
  
@@ -131,7 +131,7 @@ Now when our app loads all messages in ChatMessageArray will be added as a cell 
 
  <script src="https://gist.github.com/justinplatz/006fb28c4d1b473bbf6f.js"></script>
  
- ![image](/Users/nyjetsjustin/Documents/PubNub/pubChatMau/pubsub.gif)
+ ![image](ReadMe/pubsub.gif)
 
       
 We also want to be information about `Presence` events on the channel so we add the following to our code:
@@ -140,7 +140,7 @@ We also want to be information about `Presence` events on the channel so we add 
     
 Try running your code you should now see all past messages on your channel appear in the table. You are also able to post and receive new messages, and see all presence events as they happen all in real time!
 
-![image](/Users/nyjetsjustin/Documents/PubNub/pubChatMau/presence.gif)
+![image](ReadMe/presence.gif)
 
 
 We probably want to see a little more about who is `Here Now` in our room so add the following code and connect your occupancyButton to the function occupancyButtonTapped:
@@ -149,7 +149,7 @@ We probably want to see a little more about who is `Here Now` in our room so add
  
 You will see in the top right a number which shows how many people are currently in that chat room right now. This number will change in realtime. If you click on it a list of all the users present pops up as a modal. 
 
-![image](/Users/nyjetsjustin/Documents/PubNub/pubChatMau/herenow.gif)
+![image](ReadMe/herenow.gif)
 
 Last, we want to send Push Notifications each time the PING! button is pressed. 
 
@@ -174,7 +174,7 @@ If you have successfully set up APNS in your Apple Developer Portal, and provide
 
 Now we have successfully incorporated Pub/Sub, Presence, Storage & Playback, and Push Notifications to make our very own chat app in Swift! There is however so much more you can still do. In my GitHub repo I have made a demo which allows users to change their username, enter any chatroom they want, places a green indicator light next to messages from who are currently in the room, and uses a scroll view to move the textfield above the keyboard. 
 
-![image](/Users/nyjetsjustin/Documents/PubNub/pubChatMau/menu.gif)
+![image](ReadMe/menu.gif)
 
 
 Feel free to check my repo and see how I do it.
